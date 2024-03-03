@@ -390,6 +390,7 @@ $green-1: rgba(18, 171, 15, 1);*/
 .game .body {
   height: 83%;
   visibility: hidden;
+  z-index: 100;
 }
 .game .body.show {
   visibility: visible;
@@ -542,6 +543,24 @@ $green-1: rgba(18, 171, 15, 1);*/
   animation-duration: 0.5s;
   animation-timing-function: ease;
   animation-iteration-count: 1;
+}
+.game .game-vector {
+  width: 9rem;
+  height: 9rem;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  visibility: hidden;
+}
+.game .game-vector.show {
+  visibility: visible;
+}
+@media (min-width: 768px) {
+  .game .game-vector {
+    width: 15rem;
+    height: 15rem;
+  }
 }
 
 .pop-overlay {

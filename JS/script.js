@@ -38,6 +38,7 @@ playButton.addEventListener("click", () => {
     cardWrapper.style.visibility = "hidden";
     game.style.backgroundImage = "url('../media/images/gameBackground.svg')";
     body.classList.add("show");
+    document.querySelector(".game-vector").classList.add("show");
     cards.forEach((card) => {
       card.classList.add("show");
     });
@@ -74,20 +75,10 @@ cards.forEach((card) => {
       document.querySelector(`audio[id="${cardId}"]`).play();
       card.classList.remove("is-flippedBack");
       card.classList.add("is-flipped");
-      /*const icons2 = document.querySelectorAll(
-        `.card-icons[data-id="${cardId}"] .icon-new`
-      );*/
       icons.forEach((icon) => {
         icon.style.visibility = "visible";
         icon.classList.add("show");
       });
-      /*icons2.forEach((icon) => {
-        icon.style.visibility = "visible";
-        icon.classList.add("show");
-        icon.addEventListener("animationend", () => {
-          icon.classList.remove("show");
-        });
-      });*/
     } else {
       card.classList.remove("is-flipped");
       card.classList.add("is-flippedBack");

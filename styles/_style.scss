@@ -321,6 +321,7 @@ $vector-height: 12%;
   .body {
     height: 83%;
     visibility: hidden;
+    z-index: 100;
     &.show {
       visibility: visible;
     }
@@ -490,6 +491,24 @@ $vector-height: 12%;
             }
           }
         }
+      }
+    }
+  }
+  .game-vector {
+    width: 9rem;
+    height: 9rem;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    visibility: hidden;
+    &.show {
+      visibility: visible;
+    }
+    @include mediaQuery($medScreen_min_width) {
+      & {
+        width: 15rem;
+        height: 15rem;
       }
     }
   }
