@@ -60,7 +60,7 @@ $vector-height: 12%;
   max-height: 3rem;
   aspect-ratio: 1;
   position: relative;
-  z-index: 100;
+  z-index: 1000;
   background: linear-gradient(to bottom, $yellow-3 2%, $yellow-2);
   color: $white-1;
   font-size: 1.25rem;
@@ -120,6 +120,13 @@ $vector-height: 12%;
     top: calc(100vh - (2 * $padding));
     transform: translateY(-100%);
     transition: 0.5s;
+    visibility: hidden;
+
+    .fa-solid {
+      &.hide {
+        display: none;
+      }
+    }
   }
 }
 .show-success {
@@ -131,10 +138,17 @@ $vector-height: 12%;
   padding: $padding;
   position: relative;
   overflow-y: auto;
-  visibility: hidden;
-  background-image: url("../media/images/background.svg");
   background-size: cover;
   background-position: 50% 100%;
+  visibility: hidden;
+  transform-origin: left top;
+
+  &.hideGame {
+    animation-name: hideGame;
+    animation-timing-function: linear;
+    animation-duration: 0.7s;
+    animation-iteration-count: 1;
+  }
   &.hide {
     animation-name: scaleDown;
     animation-duration: 0.5s;
@@ -735,6 +749,15 @@ $vector-height: 12%;
     transform: translateZ(-1px) scaleX(1);
   }
 }
+@keyframes hideGame {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
 @keyframes scaleDown {
   0% {
     top: 50%;
@@ -803,26 +826,24 @@ $vector-height: 12%;
 }
 @keyframes increase {
   0% {
-    scale: 0;
+    transform: scaleX(0);
   }
   50% {
-    scale: 1.1;
+    transform: scaleX(1.15);
   }
   100% {
-    scale: 1;
+    transform: scaleX(1);
   }
 }
 @keyframes decrease {
   0% {
-    scale: 1;
+    transform: scaleX(1);
   }
-
   50% {
-    scale: 1.1;
+    transform: scaleX(1.15);
   }
-
   100% {
-    scale: 0;
+    transform: scaleX(0);
   }
 }
 @keyframes pulse {
@@ -849,7 +870,6 @@ $vector-height: 12%;
     transform: translate(-50%, -50%) scale(1);
   }
 }
-
 @keyframes successScaleDown {
   0% {
     transform: translate(-50%, -50%) scale(1);
